@@ -1,7 +1,8 @@
-from database import pool, execute_update_query, execute_select_query
-from aiogram.utils.keyboard import InlineKeyboardBuilder, ReplyKeyboardBuilder
 from aiogram import types
-from database import quiz_data
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+
+from database import execute_update_query, execute_select_query, pool
 
 
 def generate_options_keyboard(answer_options, right_answer):
@@ -97,6 +98,7 @@ async def update_quiz_index(user_id, question_index, score):
     execute_update_query(
         pool, query, user_id=user_id, question_index=question_index, score=score
     )
+
 
 async def get_total_questions():
     query = """
